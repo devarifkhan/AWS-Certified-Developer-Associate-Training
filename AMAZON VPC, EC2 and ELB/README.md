@@ -1,33 +1,41 @@
-# Create VPC
+# AWS Infrastructure Configuration
 
-Name: MyVPC
-IPv4 CIDR Block: 10.0.0.0/16
+This document outlines the configuration for the AWS infrastructure.
 
-# Create Public Subnets
+## VPC
 
-NAME: Public-1A
-Availability Zone: us-east-1a
-IPv4 CIDR Block: 10.0.0.0/24
+- **Name:** MyVPC
+- **IPv4 CIDR Block:** 10.0.0.0/16
 
-NAME: Public-1B
-Availability Zone: us-east-1b
-IPv4 CIDR Block: 10.0.0.0/24
+## Subnets
 
-NAME: Private-1A
-Availability Zone: us-east-1a
-IPv4 CIDR Block: 10.0.3.0/24
+### Public Subnets
 
-NAME: Private-1B
-Availability Zone: us-east-1b
-IPv4 CIDR Block: 10.0.4.0/24
+1. **Name:** Public-1A
+   - **Availability Zone:** us-east-1a
+   - **IPv4 CIDR Block:** 10.0.0.0/24
 
-# Create Private Route Table
+2. **Name:** Public-1B
+   - **Availability Zone:** us-east-1b
+   - **IPv4 CIDR Block:** 10.0.1.0/24
 
-Name: Private-RT
-VPC: MyVPC
-Subnet association: Private-1A, Private-1B
+### Private Subnets
 
-# Create Internet Gateway
+1. **Name:** Private-1A
+   - **Availability Zone:** us-east-1a
+   - **IPv4 CIDR Block:** 10.0.3.0/24
 
-Name: MyIGW
-VPC: MyVPC
+2. **Name:** Private-1B
+   - **Availability Zone:** us-east-1b
+   - **IPv4 CIDR Block:** 10.0.4.0/24
+
+## Route Tables
+
+- **Name:** Private-RT
+  - **VPC:** MyVPC
+  - **Subnet association:** Private-1A, Private-1B
+
+## Internet Gateway
+
+- **Name:** MyIGW
+- **VPC:** MyVPC
