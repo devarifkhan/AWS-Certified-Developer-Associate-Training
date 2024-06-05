@@ -13,11 +13,11 @@ This document outlines the configuration for the AWS infrastructure.
 
 1. **Name:** Public-1A
    - **Availability Zone:** ap-south-1a
-   - **IPv4 CIDR Block:** 10.0.0.0/24
+   - **IPv4 CIDR Block:** 10.0.1.0/24
 
 2. **Name:** Public-1B
    - **Availability Zone:** ap-south-1b
-   - **IPv4 CIDR Block:** 10.0.1.0/24
+   - **IPv4 CIDR Block:** 10.0.2.0/24
 
 ### Private Subnets
 
@@ -39,3 +39,9 @@ This document outlines the configuration for the AWS infrastructure.
 
 - **Name:** MyIGW
 - **VPC:** MyVPC
+
+
+
+# Lanuch EC2 Instance in Public 1A
+
+aws ec2 run-instances --image-id ami-00fa32593b478ad6e --instance-type t2.micro  --security-group-ids sg-0284958e7f3442466 --subnet-id subnet-0275631932e79e113 --key-name MyVPCKEY --user-data file://user-data-subnet-id.txt 

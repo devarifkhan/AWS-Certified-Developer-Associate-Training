@@ -1,0 +1,9 @@
+#!/bin/bash
+yum update -y
+yum install -y install
+systemctl start httpd
+systemctl enable httpd
+INTERFACE=$(curl -s http://169.254.169.254/latest/meta-data/network/interfaces/macs/)
+SUBNET_ID=$(curl -s http://169.254.169.254/latest/meta-data/network/interfaces/macs/${INTERFACE}/subnet-id)
+echo '<center><h1>This instance is in the subnet with ID: SUBNET_ID </h1></center>' > /var/www/html/index.html
+sed 's/SUBNET_ID/$SUBNET_ID/" /var/www/html/index.html > /var/www/html/index.html
